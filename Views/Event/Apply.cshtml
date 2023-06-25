@@ -1,0 +1,59 @@
+﻿@model Candidate
+
+<div class="display-6 mb-3">
+    Apply
+</div>
+
+<form method="post" asp-action="Apply">
+    @Html.AntiForgeryToken()
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-group my-2">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group my-2">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+
+    <div class="form-group my-2">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+
+    <div class="form-group my-2">
+        <label asp-for="Age"></label>
+        <select asp-for="Age" class="form-control">
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+        </select>
+    </div>
+
+    <fieldset>
+        <legend>Apply an event</legend>
+        <p>
+            <input id="awakenings" type="radio" asp-for="SelectedEvent" checked="checked" value="awakenings" />
+            <label>Awakenings</label>
+        </p>
+
+        <p>
+            <input id="timeWarp" type="radio" asp-for="SelectedEvent" value="timeWarp" />
+            <label>Time Warp</label>
+        </p>
+
+        <p>
+            <input id="exit" type="radio" asp-for="SelectedEvent" value="exit" />
+            <label>Exit</label>
+        </p>
+    </fieldset>
+
+    <div>
+        <button class="btn btn-primary rounded" type="submit">Apply</button>
+        <a class="btn btn-warning" asp-controller="Home" asp-action="Index">Home</a>
+    </div>
+</form>
